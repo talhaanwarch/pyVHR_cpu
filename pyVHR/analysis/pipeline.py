@@ -98,12 +98,12 @@ class Pipeline():
         for m in methods:
             assert m in available_methods, "\nrPPG method not recognized!!"
 
-        if cuda:
-            sig_processing.display_cuda_device()
-            sig_processing.choose_cuda_device(0)
+        # if cuda:
+        #     sig_processing.display_cuda_device()
+        #     sig_processing.choose_cuda_device(0)
         
         ## 1. set skin extractor
-        target_device = 'GPU' if cuda else 'CPU'
+        target_device = 'CPU'
         if roi_method == 'convexhull':
             sig_processing.set_skin_extractor(SkinExtractionConvexHull(target_device))
         elif roi_method == 'faceparsing':
@@ -322,12 +322,9 @@ class Pipeline():
 
         assert method in available_methods, "\nrPPG method not recognized!!"
 
-        if cuda:
-            sig_processing.display_cuda_device()
-            sig_processing.choose_cuda_device(0)
         
         ## 1. set skin extractor
-        target_device = 'GPU' if cuda else 'CPU'
+        target_device = 'CPU'
         if roi_method == 'convexhull':
             sig_processing.set_skin_extractor(SkinExtractionConvexHull(target_device))
         elif roi_method == 'faceparsing':
@@ -349,6 +346,8 @@ class Pipeline():
         if verb:
             print('\nProcessing Video ' + videoFileName)
         fps = get_fps(videoFileName)
+        if verb:
+            print('\n Video FPS',fps)
         sig_processing.set_total_frames(0)
 
         ## 3. ROI selection
@@ -363,7 +362,7 @@ class Pipeline():
             sig = sig_processing.extract_patches(videoFileName, 'squares', 'mean')
         if verb:
             print(' - Extraction approach: ' + roi_approach)
-
+        
         ## 4. sig windowing
         windowed_sig, timesES = sig_windowing(sig, winsize, 1, fps)
         if verb:

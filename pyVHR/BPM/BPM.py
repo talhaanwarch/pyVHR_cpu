@@ -475,7 +475,6 @@ def BVP_to_BPM_cuda(bvps, fps, minHz=0.65, maxHz=4.):
         else:
             obj.data = bvp_device
         bpm_es = obj.BVP_to_BPM()
-        bpm_es = np.asnumpy(bpm_es)
         bpms.append(bpm_es)
     return bpms
 

@@ -1,0 +1,17 @@
+wheel==0.38.4
+mediapipe==0.9.1.0
+autorank==1.1.2
+biosppy==1.0.0 
+lmfit==1.1.0 
+plotly==5.13.0 
+scikit-posthocs==0.7.0 
+scikit-image==0.19.3
+tqdm
+ipywidgets
+scipy==1.10.0
+tensorflow-cpu==2.11.0
+numba==0.56.4
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==1.12.1+cpu 
+torchvision==0.13.1+cpu
+torchaudio==0.12.1
